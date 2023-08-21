@@ -26,7 +26,7 @@ export async function get () {
         {
           id: 4,
           cover: '/_public/covers/colepeters-enfold.jpg',
-          title: 'Enfold — Rehearsal for Send + Receive',
+          title: 'Enfold: Rehearsal for Send + Receive',
           artist: 'Cole Peters',
           year: 2021,
         },
