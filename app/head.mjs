@@ -17,6 +17,10 @@ export default function Head () {
         body {
           color: var(--dark);
         }
+
+        .muted {
+          color: var(--muted);
+        }
       </style>
     </head>
     <body class='font-sans leading3'>
