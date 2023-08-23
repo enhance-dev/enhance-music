@@ -8,28 +8,45 @@ export default function AlbumData ({ html, state }) {
         border-bottom: 1px solid gainsboro;
       }
 
-      li:last-of-type {
-        border-bottom: none;
+      li:first-of-type {
+        border-top: 1px solid gainsboro;
       }
 
       a {
         grid-template-columns: 4ch 1fr 10ch;
+        transition: color 0.3s var(--easeOutQuint);
       }
 
-      .numeric {
-        font-variant-numeric: tabular-nums;
+      a:hover {
+        color: rebeccapurple;
+      }
+
+      a:focus-visible {
+        outline-offset: 2px;
+      }
+
+      album-cover {
+        flex: 1 0 150px;
+      }
+
+      header {
+        min-inline-size: 66%;
       }
     </style>
     <article>
       <layout-container>
-        <album-cover cover='${album.cover}' class='block mb0'></album-cover>
-        <h2 class='text3 font-medium tracking-1 leading1'>${album.title}</h2>
-        <p class='muted text1 mbe0'>${album.artist}</p>
-        <p class='muted text-1'>${album.label || 'Self released'}, ${album.year}</p>
+        <div class='meta flex flex-wrap align-items-center gap0 gap2-lg mb2'>
+          <album-cover cover='${album.cover}'></album-cover>
+          <header>
+            <h2 class='text3 font-medium tracking-1 leading1'>${album.title}</h2>
+            <p class='muted text1 mbe2'>${album.artist}</p>
+            <p class='muted text-1'>${album.label || 'Self released'}, ${album.year}</p>
+          </header>
+        </div>
 
         <ol class='mb0 list-none flex flex-col'>
           ${album.tracklist.map((track, index) => `<li>
-            <a class='pb-4 grid flow-col align-items-baseline'>
+            <a class='pb-4 grid flow-col align-items-baseline' href='#'>
               <span class='muted numeric text-1'>
                 ${index + 1}
               </span>

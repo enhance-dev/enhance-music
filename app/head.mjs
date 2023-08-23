@@ -21,6 +21,10 @@ export default function Head () {
         .muted {
           color: var(--muted);
         }
+
+        .numeric {
+          font-variant-numeric: tabular-nums;
+        }
       </style>
     </head>
     <body class='font-sans leading3'>
