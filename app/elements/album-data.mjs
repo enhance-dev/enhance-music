@@ -46,7 +46,7 @@ export default function AlbumData ({ html, state }) {
 
         <ol class='mb0 list-none flex flex-col'>
           ${album.tracklist.map((track, index) => `<li>
-            <a class='pb-4 grid flow-col align-items-baseline' href='#'>
+            <a class='pb-4 grid flow-col align-items-baseline' href='/player/foo' target='player'>
               <span class='muted numeric text-1'>
                 ${index + 1}
               </span>
