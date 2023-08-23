@@ -28,7 +28,8 @@
     "muted": "#6c757d"
   },
   "properties": {
-    "easeOutQuint": "cubic-bezier(0.23,1,0.32,1)"
+    "easeOutQuint": "cubic-bezier(0.23,1,0.32,1)",
+    "playerHeight": "4rem"
   },
   "grid": {
     "steps": 6
