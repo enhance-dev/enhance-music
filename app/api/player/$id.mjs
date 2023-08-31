@@ -1,7 +1,7 @@
 export async function get () {
   return {
     json: {
-      track: '/_static/tracks/arttr.mp3'
+      track: '/_public/tracks/arttr.mp3'
     }
   }
 }
