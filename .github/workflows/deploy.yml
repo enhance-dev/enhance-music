@@ -1,0 +1,63 @@
+name: Node CI
+
+# Push tests pushes; PR tests merges
+on: [ push, pull_request ]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # Deploy the build
+  deploy_staging:
+    name: Deploy staging
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' # Don't run twice for PRs (for now)
+    runs-on: ubuntu-latest
+    concurrency:
+      group: staging_${{ github.repository }}
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install
+        run: npm install
+
+      - name: Deploy to staging
+        uses: beginner-corp/actions/deploy@main
+        with:
+          begin_token: ${{ secrets.BEGIN_TOKEN }}
+          begin_env_name: staging
+          channel: 'main'
+
+  # Deploy the build
+  deploy_production:
+    name: Deploy production
+    if: startsWith(github.ref, 'refs/tags/v') && github.event_name == 'push' # Don't run twice for PRs (for now)
+    runs-on: ubuntu-latest
+    concurrency:
+      group: production_${{ github.repository }}
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install
+        run: npm install
+
+      - name: Deploy to production
+        uses: beginner-corp/actions/deploy@main
+        with:
+          begin_token: ${{ secrets.BEGIN_TOKEN }}
+          begin_env_name: production
+          channel: 'main'
