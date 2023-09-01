@@ -25,7 +25,8 @@
     "dark": "#15171b"
   },
   "color": {
-    "muted": "#6c757d"
+    "muted": "#6c757d",
+    "purple": "#9853f7"
   },
   "properties": {
     "easeOutQuint": "cubic-bezier(0.23,1,0.32,1)",

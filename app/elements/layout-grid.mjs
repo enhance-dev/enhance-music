@@ -8,12 +8,7 @@ export default function LayoutGrid ({ html }) {
         position: relative;
       }
 
-      [name="library"] {
-        padding-block-end: var(--playerHeight);
-      }
-
       [name="player"] {
-        border-block-start: 1px solid gainsboro;
         block-size: var(--playerHeight);
       }
     </style>

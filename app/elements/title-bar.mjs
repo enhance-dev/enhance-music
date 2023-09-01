@@ -13,7 +13,7 @@ export default function TitleBar ({ html }) {
     </style>
     <nav class='pb0'>
       <layout-container>
-        <a class='no-underline flex gap-1 align-items-center' href='/'>
+        <a class='no-underline flex gap-1 align-items-center' href='/library' target='library'>
           <img src='/_public/axol.svg' alt='Axol' />
           <h1 class='text1 font-medium tracking-1'>Enhance Music</h1>
         </a>

@@ -4,6 +4,11 @@ export default function AlbumData ({ html, state }) {
 
   return html`
     <style>
+      :host {
+        display: block;
+        padding-block-end: var(--playerHeight);
+      }
+
       li {
         border-bottom: 1px solid gainsboro;
       }
