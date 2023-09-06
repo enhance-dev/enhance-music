@@ -46,6 +46,7 @@ export default function AlbumData ({ html, state }) {
             <h2 class='text3 font-medium tracking-1 leading1'>${album.title}</h2>
             <p class='muted text1 mbe2'>${album.artist}</p>
             <p class='muted text-1'>${album.label || 'Self released'}, ${album.year}</p>
+            <p class='muted text-1'><a href='${album.bandcamp}' class='underline' target='_blank'>Stream & purchase on Bandcamp</a></p>
           </header>
         </div>
 
