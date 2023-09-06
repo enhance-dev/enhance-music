@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    cover: '/_public/covers/colepeters-fourunbindings.jpg',
+    cover: '/_public/covers/colepeters-fourunbindings.webp',
     title: 'Four Unbindings',
     artist: 'Cole Peters',
     year: 2023,
@@ -27,7 +27,7 @@ export default [
   },
   {
     id: 2,
-    cover: '/_public/covers/colepeters-tracesblurssigns.jpg',
+    cover: '/_public/covers/colepeters-tracesblurssigns.webp',
     title: 'Traces Blurs Signs',
     artist: 'Cole Peters',
     year: 2023,
@@ -53,7 +53,7 @@ export default [
   },
   {
     id: 3,
-    cover: '/_public/covers/colepeters-acertainpointofinertia.jpg',
+    cover: '/_public/covers/colepeters-acertainpointofinertia.webp',
     title: 'A Certain Point of Inertia',
     artist: 'Cole Peters',
     year: 2022,
@@ -83,7 +83,7 @@ export default [
   },
   {
     id: 4,
-    cover: '/_public/covers/colepeters-enfold.jpg',
+    cover: '/_public/covers/colepeters-enfold.webp',
     title: 'Enfold: Rehearsal for Send + Receive',
     artist: 'Cole Peters',
     year: 2021,
@@ -96,7 +96,7 @@ export default [
   },
   {
     id: 5,
-    cover: '/_public/covers/colepeters-apatternofextraction.jpg',
+    cover: '/_public/covers/colepeters-apatternofextraction.webp',
     title: 'A Pattern of Extraction',
     artist: 'Cole Peters',
     year: 2021,
@@ -126,7 +126,7 @@ export default [
   },
   {
     id: 6,
-    cover: '/_public/covers/colepeters-astablemeansofdegradation.jpg',
+    cover: '/_public/covers/colepeters-astablemeansofdegradation.webp',
     title: 'A Stable Means of Degradation',
     artist: 'Cole Peters',
     year: 2021,
@@ -160,7 +160,7 @@ export default [
   },
   {
     id: 7,
-    cover: '/_public/covers/unfolding-boundary.jpg',
+    cover: '/_public/covers/unfolding-boundary.webp',
     title: 'Boundary',
     artist: 'Unfolding',
     year: 2020,
@@ -189,7 +189,7 @@ export default [
   },
   {
     id: 8,
-    cover: '/_public/covers/unfolding-initialstate.jpg',
+    cover: '/_public/covers/unfolding-initialstate.webp',
     title: 'Initial State',
     artist: 'Unfolding',
     year: 2020,

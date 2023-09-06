@@ -10,6 +10,7 @@ export default function AudioPlayer ({ html, state }) {
       html,
       body {
         block-size: 100%;
+        overflow: hidden;
       }
     </style>
 
