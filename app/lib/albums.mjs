@@ -6,6 +6,7 @@ export default [
     artist: 'Cole Peters',
     year: 2023,
     label: 'LINE',
+    bandcamp: 'https://lineimprint.bandcamp.com/album/four-unbindings',
     tracklist: [
       {
         title: 'Diaphragmatic',
@@ -32,6 +33,7 @@ export default [
     artist: 'Cole Peters',
     year: 2023,
     label: 'Park70',
+    bandcamp: 'https://colepeters.bandcamp.com/album/traces-blurs-signs',
     tracklist: [
       {
         title: 'Enclosure',
@@ -58,6 +60,7 @@ export default [
     artist: 'Cole Peters',
     year: 2022,
     label: 'Room40',
+    bandcamp: 'https://colepeters.bandcamp.com/album/a-certain-point-of-inertia',
     tracklist: [
       {
         title: 'Immersion as a Means of Erosion',
@@ -87,6 +90,7 @@ export default [
     title: 'Enfold: Rehearsal for Send + Receive',
     artist: 'Cole Peters',
     year: 2021,
+    bandcamp: 'https://colepeters.bandcamp.com/album/enfold-rehearsal-for-send-receive-2021',
     tracklist: [
       {
         title: 'Enfold: Rehearsal for Send + Receive',
@@ -101,6 +105,7 @@ export default [
     artist: 'Cole Peters',
     year: 2021,
     label: 'Makade Star',
+    bandcamp: 'https://colepeters.bandcamp.com/album/a-pattern-of-extraction',
     tracklist: [
       {
         title: 'Pull',
@@ -131,6 +136,7 @@ export default [
     artist: 'Cole Peters',
     year: 2021,
     label: 'Grisaille',
+    bandcamp: 'https://colepeters.bandcamp.com/album/a-stable-means-of-degradation',
     tracklist: [
       {
         title: 'Remnant',
@@ -155,56 +161,6 @@ export default [
       {
         title: 'Recede',
         duration: '5:12',
-      },
-    ]
-  },
-  {
-    id: 7,
-    cover: '/_public/covers/unfolding-boundary.webp',
-    title: 'Boundary',
-    artist: 'Unfolding',
-    year: 2020,
-    tracklist: [
-      {
-        title: 'Carrier',
-        duration: '5:55',
-      },
-      {
-        title: 'Trajectory',
-        duration: '9:40',
-      },
-      {
-        title: 'Phase Transition',
-        duration: '8:23',
-      },
-      {
-        title: 'Harness',
-        duration: '7:29',
-      },
-      {
-        title: 'Union',
-        duration: '3:16',
-      },
-    ]
-  },
-  {
-    id: 8,
-    cover: '/_public/covers/unfolding-initialstate.webp',
-    title: 'Initial State',
-    artist: 'Unfolding',
-    year: 2020,
-    tracklist: [
-      {
-        title: 't₀',
-        duration: '8:51',
-      },
-      {
-        title: 'k. log W',
-        duration: '6:40',
-      },
-      {
-        title: 'Configuration',
-        duration: '10:23',
       },
     ]
   },
