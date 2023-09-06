@@ -23,7 +23,7 @@ export default function AlbumData ({ html, state }) {
       }
 
       a:hover {
-        color: rebeccapurple;
+        color: var(--purple);
       }
 
       a:focus-visible {

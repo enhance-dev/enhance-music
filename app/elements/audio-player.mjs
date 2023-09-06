@@ -90,7 +90,7 @@ export default function AudioPlayer ({ html, state }) {
 
     <script type='module'>
       import Wavesurfer from '/_public/browser/wavesurfer.mjs'
-      import formatTime from '/_public/browser/formatTime.mjs'
+      import formatTime from '/_public/browser/format-time.mjs'
 
       const colors = {
         cloud: '#f7f0fe',
