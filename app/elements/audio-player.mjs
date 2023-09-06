@@ -1,3 +1,5 @@
+import arc from '@architect/functions'
+
 export default function AudioPlayer ({ html, state }) {
   const { store } = state
   const { track } = store
@@ -10,6 +12,7 @@ export default function AudioPlayer ({ html, state }) {
         block-size: 100%;
       }
     </style>
+
     <style>
       :host {
         display: flex;
@@ -47,8 +50,8 @@ export default function AudioPlayer ({ html, state }) {
       input {
         accent-color: var(--purple);
       }
-
     </style>
+
     <figure
       id='player'
       class='
@@ -75,13 +78,13 @@ export default function AudioPlayer ({ html, state }) {
       <span id='currentTime' class='numeric text-2'>00:00</span>
       <input type='range' name='timeline' min='0' max='100' step='1' value='0' />
       <span id='duration' class='numeric text-2'>00:00</span>
-      <audio autoplay id='client-audio' src='${track}'></audio>
+      <audio autoplay id='client-audio' src='${arc.static(track)}'></audio>
     </figure>
 
     <div id='waveform' class='si-100 relative z0 hidden'></div>
 
     <figure id='systemUi' class='flex justify-content-center align-items-center sb-100'>
-      <audio autoplay controls src='${track}'></audio>
+      <audio autoplay controls src='${arc.static(track)}'></audio>
     </figure>
 
     <script type='module'>

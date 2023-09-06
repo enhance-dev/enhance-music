@@ -6,6 +6,7 @@
     "lint": "eslint ./app/**/*.mjs --fix"
   },
   "dependencies": {
+    "@architect/functions": "^7.0.0",
     "@enhance/arc-plugin-enhance": "^6.2.1",
     "@enhance/styles-cribsheet": "^0.0.9",
     "wavesurfer.js": "^7.2.0"
