@@ -12,6 +12,10 @@ export default function AlbumItem ({ html, state }) {
         scale: 1.05;
       }
 
+      a:active album-cover {
+        scale: 0.9375;
+      }
+
       a:focus-visible {
         outline-offset: 0.25em;
       }
