@@ -9,7 +9,7 @@ export default function AlbumItem ({ html, state }) {
       }
 
       a:hover album-cover {
-        scale: 0.9375;
+        scale: 1.05;
       }
 
       a:focus-visible {

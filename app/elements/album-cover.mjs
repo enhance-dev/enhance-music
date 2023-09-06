@@ -6,7 +6,7 @@ export default function AlbumCover ({ html, state }) {
     <style>
       :host {
         display: block;
-        transition: scale 0.3s var(--easeOutQuint);
+        transition: scale 0.5s var(--easeOutQuint);
       }
 
       figure,
