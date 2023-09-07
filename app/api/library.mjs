@@ -8,8 +8,9 @@ export async function get (req) {
       recent: albums,
     },
     session: {
+      ...prevSession,
       album: null,
-      track: prevSession.track || null
+      track: prevSession.track || null,
     }
   }
 }
