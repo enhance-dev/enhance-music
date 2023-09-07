@@ -27,7 +27,14 @@ export default function AudioPlayer ({ html, state }) {
 
       figure {
         background: hsla(0 0% 100% / 0.5);
+        -webkit-backdrop-filter: blur(3px);
         backdrop-filter: blur(3px);
+      }
+
+      [name='playback'] {
+        aspect-ratio: 1 / 1;
+        inline-size: 2em;
+        background: var(--purple);
       }
 
       [aria-pressed='false'] .pause {
@@ -38,12 +45,7 @@ export default function AudioPlayer ({ html, state }) {
         display: none;
       }
 
-      [name='playback'] {
-        aspect-ratio: 1 / 1;
-        inline-size: 2em;
-        background: var(--purple);
-      }
-
+      /* Offset play icon for optical alignment */
       .play {
         inset-inline-start: 0.05em;
       }
@@ -53,6 +55,7 @@ export default function AudioPlayer ({ html, state }) {
       }
     </style>
 
+    <!-- Progressively enhanced audio player, client only -->
     <figure
       id='player'
       class='
@@ -82,8 +85,10 @@ export default function AudioPlayer ({ html, state }) {
       <audio autoplay id='client-audio' src='${arc.static(track)}'></audio>
     </figure>
 
+    <!-- Waveform UI, client only -->
     <div id='waveform' class='si-100 relative z0 hidden'></div>
 
+    <!-- System audio player fallback -->
     <figure id='systemUi' class='flex justify-content-center align-items-center sb-100'>
       <audio autoplay controls src='${arc.static(track)}'></audio>
     </figure>
@@ -95,19 +100,17 @@ export default function AudioPlayer ({ html, state }) {
       const colors = {
         cloud: '#f7f0fe',
         cyan: '#71f6ff',
-        inky: '#4d7185',
         lily: '#e5ebee',
-        magenta: '#e21893',
-        paleCyan: '#d3fbff',
         princess: '#f57aff',
-        purple: '#ad6ef9',
       }
 
+      // Gradient for initial waveform
       const waveCtx = document.createElement('canvas').getContext('2d')
       const waveGradient = waveCtx.createLinearGradient(0, 0, 0, 150)
       waveGradient.addColorStop(0.125, colors.cloud)
       waveGradient.addColorStop(1, colors.lily)
 
+      // Gradient for progress waveform
       const progressCtx = document.createElement('canvas').getContext('2d')
       const progressGradient = progressCtx.createLinearGradient(0, 0, 0, 200)
       progressGradient.addColorStop(0.125, colors.princess)
@@ -124,7 +127,6 @@ export default function AudioPlayer ({ html, state }) {
           this.player = document.getElementById('player')
           this.systemUi = document.getElementById('systemUi')
           this.audio = document.getElementById('client-audio')
-          this.duration = this.audio.duration
           this.playback = this.querySelector('[name="playback"]')
           this.timeline = this.querySelector('[name="timeline"]')
           this.currentTimeDisplay = document.getElementById('currentTime')
@@ -146,6 +148,7 @@ export default function AudioPlayer ({ html, state }) {
         }
 
         connectedCallback() {
+          // Remove system UI, show client UI
           this.systemUi.remove()
           this.player.classList.replace('hidden', 'inline-flex')
           this.waveform.classList.remove('hidden')
@@ -165,13 +168,13 @@ export default function AudioPlayer ({ html, state }) {
         }
 
         onMetadata = () => {
-          this.duration = this.audio.duration
+          // Update duration once metadata available
           this.timeline.setAttribute('max', this.audio.duration)
-          this.durationDisplay.innerText = formatTime(this.duration)
+          this.durationDisplay.innerText = formatTime(this.audio.duration)
         }
 
         // Annoyingly, the HTMLMediaElement play event doesn't seem to fire on autoplay, despite being meant to. 
-        // So, to account for autoplay, we handle updating the playback button state on the first instace of the timeupdate event.
+        // To account for autoplay, we handle updating the playback button state on the first instace of the timeupdate event.
         // This event listener is attached with options.once, so this will be removed after its first invocation.
         onFirstTimeUpdate = () => {
           !this.audio.paused && this.onPlay()
@@ -190,22 +193,26 @@ export default function AudioPlayer ({ html, state }) {
         }
 
         onTimeUpdate = () => {
+          // Sync currentTime to timeline value, time display, and wavesurfer
           const { currentTime, paused } = this.audio
           this.timeline.value = currentTime
           this.currentTimeDisplay.innerText = formatTime(currentTime)
           this.wavesurfer.setTime(currentTime)
         }
 
+        // input.ontimeupdate fires continuously as the range input is dragged/manipulated by the user
         onTimelineInput = (e) => {
-          // Pausing syncing between audio.currentTime and the timeline;
+          // Pause syncing between audio.currentTime and the timeline value;
           // this allows us to update the range input based on user input instead
           this.audio.removeEventListener('timeupdate', this.onTimeUpdate)
 
+          // Set time display and wavesurfer manually based on input value
           const seekTime = Number(e.target.value)
           this.currentTimeDisplay.innerText = formatTime(seekTime)
           this.wavesurfer.setTime(seekTime)
         }
 
+        // input.onchange fires when the final value is selected by the user (i.e. on drag end)
         onTimelineChange = (e) => {
           const newTime = Number(e.target.value)
           this.timeline.value = newTime
@@ -215,6 +222,7 @@ export default function AudioPlayer ({ html, state }) {
           this.audio.addEventListener('timeupdate', this.onTimeUpdate)
         }
 
+        // Reset the playback button when the audio ends
         onEnded = () => {
           this.playback.setAttribute('aria-pressed', false)
         }
