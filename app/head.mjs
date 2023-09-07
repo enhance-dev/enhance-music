@@ -2,7 +2,23 @@ import { getStyles }  from '@enhance/arc-plugin-styles'
 
 const { linkTag } = getStyles
 
-export default function Head () {
+export default function Head (state) {
+  const { store, req: { session } } = state
+
+  if (session?.album) {
+    store.nav = {
+      ...store.nav,
+      album: session.album,
+    }
+  }
+
+  if (session?.track) {
+    store.nav = {
+      ...store.nav,
+      track: session.track,
+    }
+  }
+
   return `
     <!DOCTYPE html>
     <html lang="en">
