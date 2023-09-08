@@ -1,6 +1,6 @@
 export default function AlbumData ({ html, state }) {
   const { store } = state
-  const { album, nav } = store
+  const { album, nav = {} } = store
 
   const { track = '' } = nav
 
