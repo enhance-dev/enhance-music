@@ -1,6 +1,9 @@
 export default function AlbumData ({ html, state }) {
   const { store } = state
-  const { album } = store
+  const { album, nav } = store
+
+  const { track: selectedTrack = '' } = nav
+  console.log({ selectedTrack })
 
   const bandcamp = album.bandcamp
     ? `<p class='muted text-1'><a href='${album.bandcamp}' class='underline' target='_blank'>Stream & purchase on Bandcamp</a></p>`
@@ -63,7 +66,7 @@ export default function AlbumData ({ html, state }) {
       </div>
 
       <ol class='mb0 list-none'>
-        ${album.tracklist.map((track, index) => `<li aria-current='false'>
+        ${album.tracklist.map((track, index) => `<li aria-current='${selectedTrack === `${album.id}-${index + 1}`}'>
           <a class='pb-4 grid flow-col align-items-baseline' href='/player/${album.id}-${index + 1}' target='player'>
             <span class='text-1 muted numeric index'>${index + 1}</span>
             <span class='playing'>&#9654;</span>
