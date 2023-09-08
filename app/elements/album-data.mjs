@@ -21,6 +21,15 @@ export default function AlbumData ({ html, state }) {
         border-top: 1px solid gainsboro;
       }
 
+      [aria-current="false"] .playing,
+      [aria-current="true"] .index {
+        display: none;
+      }
+
+      .playing {
+        color: var(--purple);
+      }
+
       a {
         grid-template-columns: 4ch 1fr 10ch;
         transition: color 0.3s var(--easeOutQuint);
@@ -54,11 +63,10 @@ export default function AlbumData ({ html, state }) {
       </div>
 
       <ol class='mb0 list-none'>
-        ${album.tracklist.map((track, index) => `<li>
+        ${album.tracklist.map((track, index) => `<li aria-current='false'>
           <a class='pb-4 grid flow-col align-items-baseline' href='/player/${album.id}-${index + 1}' target='player'>
-            <span class='muted numeric text-1'>
-              ${index + 1}
-            </span>
+            <span class='text-1 muted numeric index'>${index + 1}</span>
+            <span class='playing'>&#9654;</span>
             <span>
               ${track.title}
             </span>
@@ -69,5 +77,18 @@ export default function AlbumData ({ html, state }) {
         </li>`).join('')}
       </ol>
     </article>
+
+    <script type='module'>
+      // Show a play icon on the clicked track in a tracklist
+      const tracks = document.querySelectorAll('li')
+      const links = document.querySelectorAll('a[target="player"]')
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const selectedTrack = e.target.closest('li')
+          tracks.forEach(li => li.setAttribute('aria-current', 'false'))
+          selectedTrack.setAttribute('aria-current', 'true')
+        })
+      })
+    </script>
   `
 }

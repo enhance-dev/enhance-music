@@ -135,7 +135,6 @@ export default function AudioPlayer ({ html, state }) {
           this.wavesurfer = null
 
           // Event listeners
-          this.audio.addEventListener('loadedmetadata', this.onMetadata)
           this.playback.addEventListener('click', this.onPlayPause)
           this.audio.addEventListener('pause', this.onPause)
           this.audio.addEventListener('play', this.onPlay)
@@ -145,15 +144,16 @@ export default function AudioPlayer ({ html, state }) {
           this.timeline.addEventListener('input', this.onTimelineInput)
           this.timeline.addEventListener('change', this.onTimelineChange)
 
-        }
-
-        connectedCallback() {
           // Remove system UI, show client UI
           this.systemUi.remove()
           this.player.classList.replace('hidden', 'inline-flex')
           this.waveform.classList.remove('hidden')
 
-          // Wavesurfer
+          // Set duration
+          this.timeline.setAttribute('max', this.audio.duration)
+          this.durationDisplay.innerText = formatTime(this.audio.duration)
+
+          // Create waveform
           this.wavesurfer = Wavesurfer.create({
             barRadius: 3,
             barWidth: 3,
@@ -165,12 +165,6 @@ export default function AudioPlayer ({ html, state }) {
             url: this.audio.getAttribute('src'),
             waveColor: waveGradient,
           })
-        }
-
-        onMetadata = () => {
-          // Update duration once metadata available
-          this.timeline.setAttribute('max', this.audio.duration)
-          this.durationDisplay.innerText = formatTime(this.audio.duration)
         }
 
         // Annoyingly, the HTMLMediaElement play event doesn't seem to fire on autoplay, despite being meant to. 
