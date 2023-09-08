@@ -2,8 +2,7 @@ export default function AlbumData ({ html, state }) {
   const { store } = state
   const { album, nav } = store
 
-  const { track: selectedTrack = '' } = nav
-  console.log({ selectedTrack })
+  const { track = '' } = nav
 
   const bandcamp = album.bandcamp
     ? `<p class='muted text-1'><a href='${album.bandcamp}' class='underline' target='_blank'>Stream & purchase on Bandcamp</a></p>`
@@ -24,9 +23,13 @@ export default function AlbumData ({ html, state }) {
         border-top: 1px solid gainsboro;
       }
 
-      [aria-current="false"] .playing,
+      .playing,
       [aria-current="true"] .index {
         display: none;
+      }
+
+      [aria-current="true"] .playing {
+        display: inline;
       }
 
       .playing {
@@ -66,7 +69,7 @@ export default function AlbumData ({ html, state }) {
       </div>
 
       <ol class='mb0 list-none'>
-        ${album.tracklist.map((track, index) => `<li aria-current='${selectedTrack === `${album.id}-${index + 1}`}'>
+        ${album.tracklist.map((track, index) => `<li data-track='${album.id}-${index + 1}'>
           <a class='pb-4 grid flow-col align-items-baseline' href='/player/${album.id}-${index + 1}' target='player'>
             <span class='text-1 muted numeric index'>${index + 1}</span>
             <span class='playing'>&#9654;</span>
@@ -81,15 +84,27 @@ export default function AlbumData ({ html, state }) {
       </ol>
     </article>
 
+    <script id='initial-state' type='application/json'>
+      { "track": "${track}" }
+    </script>
+
     <script type='module'>
-      // Show a play icon on the clicked track in a tracklist
       const tracks = document.querySelectorAll('li')
+      const { track: initialTrack = '' } = JSON.parse(document.getElementById('initial-state').textContent)
+
+      function setCurrent (items, current) {
+        items.forEach(item => item.setAttribute('aria-current', item.dataset.track === current))
+      }
+
+      // Set initial current track based on initial state
+      setCurrent(tracks, initialTrack)
+
+      // Update current track when a new track is selected
       const links = document.querySelectorAll('a[target="player"]')
       links.forEach(link => {
         link.addEventListener('click', (e) => {
-          const selectedTrack = e.target.closest('li')
-          tracks.forEach(li => li.setAttribute('aria-current', 'false'))
-          selectedTrack.setAttribute('aria-current', 'true')
+          const clickedTrack = e.target.closest('li').dataset.track
+          setCurrent(tracks, clickedTrack)
         })
       })
     </script>
