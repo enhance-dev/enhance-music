@@ -2,6 +2,10 @@ export default function AlbumData ({ html, state }) {
   const { store } = state
   const { album } = store
 
+  const bandcamp = album.bandcamp
+    ? `<p class='muted text-1'><a href='${album.bandcamp}' class='underline' target='_blank'>Stream & purchase on Bandcamp</a></p>`
+    : ''
+
   return html`
     <style>
       :host {
@@ -39,33 +43,31 @@ export default function AlbumData ({ html, state }) {
       }
     </style>
     <article>
-      <layout-container>
-        <div class='meta flex flex-wrap align-items-center gap0 gap2-lg mb2'>
-          <album-cover cover='${album.cover}'></album-cover>
-          <header>
-            <h2 class='text3 font-medium tracking-1 leading1'>${album.title}</h2>
-            <p class='muted text1 mbe2'>${album.artist}</p>
-            <p class='muted text-1'>${album.label || 'Self released'}, ${album.year}</p>
-            <p class='muted text-1'><a href='${album.bandcamp}' class='underline' target='_blank'>Stream & purchase on Bandcamp</a></p>
-          </header>
-        </div>
+      <div class='meta flex flex-wrap align-items-center gap0 gap2-lg mb2'>
+        <album-cover cover='${album.cover}'></album-cover>
+        <header>
+          <h2 class='text3 font-medium tracking-1 leading1'>${album.title}</h2>
+          <p class='muted text1 mbe2'>${album.artist}</p>
+          <p class='muted text-1'>${album.label || 'Self released'}, ${album.year}</p>
+          ${bandcamp}
+        </header>
+      </div>
 
-        <ol class='mb0 list-none flex flex-col'>
-          ${album.tracklist.map((track, index) => `<li>
-            <a class='pb-4 grid flow-col align-items-baseline' href='/player/foo' target='player'>
-              <span class='muted numeric text-1'>
-                ${index + 1}
-              </span>
-              <span>
-                ${track.title}
-              </span>
-              <span class='muted numeric text-1 text-end'>
-                ${track.duration}
-              </span>
-            </a>
-          </li>`).join('')}
-        </ol>
-      </layout-container>
+      <ol class='mb0 list-none'>
+        ${album.tracklist.map((track, index) => `<li>
+          <a class='pb-4 grid flow-col align-items-baseline' href='/player/${album.id}-${index + 1}' target='player'>
+            <span class='muted numeric text-1'>
+              ${index + 1}
+            </span>
+            <span>
+              ${track.title}
+            </span>
+            <span class='muted numeric text-1 text-end'>
+              ${track.duration}
+            </span>
+          </a>
+        </li>`).join('')}
+      </ol>
     </article>
   `
 }

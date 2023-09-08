@@ -164,4 +164,38 @@ export default [
       },
     ]
   },
+  {
+    id: 7,
+    cover: '/_public/covers/damske-pestilence.webp',
+    title: 'Pestilence b/w Tried By 12 (Refix)',
+    artist: 'Damske',
+    year: 2000,
+    tracklist: [
+      {
+        title: 'Pestilence',
+        duration: '3:21',
+      },
+      {
+        title: 'Tried By 12 (Refix)',
+        duration: '2:56',
+      }
+    ],
+  },
+  {
+    id: 8,
+    cover: '/_public/covers/damske-withakickandasnare.webp',
+    title: 'With a Kick and a Snare b/w Soul Shakedown',
+    artist: 'Damske',
+    year: 2000,
+    tracklist: [
+      {
+        title: 'With a Kick and a Snare',
+        duration: '3:25',
+      },
+      {
+        title: 'Soul Shakedown',
+        duration: '1:42',
+      }
+    ],
+  }
 ]

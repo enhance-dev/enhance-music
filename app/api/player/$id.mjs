@@ -4,7 +4,7 @@ export async function get (req) {
 
   return {
     json: {
-      track: 'tracks/arttr.mp3',
+      track: `tracks/${id}.mp3`,
     },
     session: {
       ...prevSession,
