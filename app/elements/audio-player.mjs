@@ -55,6 +55,11 @@ export default function AudioPlayer ({ html, state }) {
       }
     </style>
 
+    <!-- System audio player fallback -->
+    <figure id='systemUi' class='flex justify-content-center align-items-center sb-100'>
+      <audio autoplay controls src='${arc.static(track)}'></audio>
+    </figure>
+
     <!-- Progressively enhanced audio player, client only -->
     <figure
       id='player'
@@ -82,16 +87,10 @@ export default function AudioPlayer ({ html, state }) {
       <span id='currentTime' class='numeric text-2'>00:00</span>
       <input type='range' name='timeline' min='0' max='100' step='1' value='0' />
       <span id='duration' class='numeric text-2'>00:00</span>
-      <audio autoplay id='client-audio' src='${arc.static(track)}'></audio>
     </figure>
 
     <!-- Waveform UI, client only -->
     <div id='waveform' class='si-100 relative z0 hidden'></div>
-
-    <!-- System audio player fallback -->
-    <figure id='systemUi' class='flex justify-content-center align-items-center sb-100'>
-      <audio autoplay controls src='${arc.static(track)}'></audio>
-    </figure>
 
     <script type='module'>
       import Wavesurfer from '/_public/browser/wavesurfer.mjs'
@@ -123,10 +122,9 @@ export default function AudioPlayer ({ html, state }) {
         constructor() {
           super()
 
-          // Properties
+          // Instance properties
           this.player = document.getElementById('player')
           this.systemUi = document.getElementById('systemUi')
-          this.audio = document.getElementById('client-audio')
           this.playback = this.querySelector('[name="playback"]')
           this.timeline = this.querySelector('[name="timeline"]')
           this.currentTimeDisplay = document.getElementById('currentTime')
@@ -134,24 +132,28 @@ export default function AudioPlayer ({ html, state }) {
           this.waveform = document.getElementById('waveform')
           this.wavesurfer = null
 
+          // Create client audio element.
+          // We need to create this in JS in order to attach event listeners to the audio element
+          // before rendering it; otherwise the events will fire before we can attach the listeners :,)
+          this.audio = document.createElement('audio')
+          this.audio.src = document.querySelector('#systemUi audio').getAttribute('src')
+          this.audio.autoplay = true
+
           // Event listeners
           this.playback.addEventListener('click', this.onPlayPause)
+          this.audio.addEventListener('loadedmetadata', this.onMetadata)
           this.audio.addEventListener('pause', this.onPause)
           this.audio.addEventListener('play', this.onPlay)
           this.audio.addEventListener('timeupdate', this.onTimeUpdate)
-          this.audio.addEventListener('timeupdate', this.onFirstTimeUpdate, { once: true }) // handles autoplay
           this.audio.addEventListener('ended', this.onEnded)
           this.timeline.addEventListener('input', this.onTimelineInput)
           this.timeline.addEventListener('change', this.onTimelineChange)
 
-          // Remove system UI, show client UI
+          // Remove system UI, append client audio, show client UI
           this.systemUi.remove()
+          this.player.appendChild(this.audio)
           this.player.classList.replace('hidden', 'inline-flex')
           this.waveform.classList.remove('hidden')
-
-          // Set duration
-          this.timeline.setAttribute('max', this.audio.duration)
-          this.durationDisplay.innerText = formatTime(this.audio.duration)
 
           // Create waveform
           this.wavesurfer = Wavesurfer.create({
@@ -167,11 +169,11 @@ export default function AudioPlayer ({ html, state }) {
           })
         }
 
-        // Annoyingly, the HTMLMediaElement play event doesn't seem to fire on autoplay, despite being meant to. 
-        // To account for autoplay, we handle updating the playback button state on the first instace of the timeupdate event.
-        // This event listener is attached with options.once, so this will be removed after its first invocation.
-        onFirstTimeUpdate = () => {
-          !this.audio.paused && this.onPlay()
+        onMetadata = () => {
+          // Set duration
+          const { duration } = this.audio
+          this.timeline.setAttribute('max', duration)
+          this.durationDisplay.innerText = formatTime(duration)
         }
 
         onPlayPause = () => {
