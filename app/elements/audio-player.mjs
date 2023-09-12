@@ -2,7 +2,7 @@ import arc from '@architect/functions'
 
 export default function AudioPlayer ({ html, state }) {
   const { store } = state
-  const { track } = store
+  const { track, trackTitle, trackArtist, trackCover} = store
 
   return html`
     <style scope='global'>
@@ -27,8 +27,11 @@ export default function AudioPlayer ({ html, state }) {
 
       figure {
         background: hsla(0 0% 100% / 0.5);
-        -webkit-backdrop-filter: blur(3px);
-        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
+        box-shadow: 0 0 3px gainsboro;
+        border-radius: 0.25em;
+        grid-template-columns: auto 1fr 3.75em;
       }
 
       [name='playback'] {
@@ -52,6 +55,7 @@ export default function AudioPlayer ({ html, state }) {
 
       input {
         accent-color: var(--purple);
+        max-inline-size: 100px;
       }
     </style>
 
@@ -66,15 +70,17 @@ export default function AudioPlayer ({ html, state }) {
       class='
         align-items-center
         justify-content-center
-        gap-2
+        gap-4
+        gap-2-lg
         mb-2
-        p-4
-        radius-pill
+        pis-4
+        pis-2-lg
         absolute
         z1
         m-auto
+        overflow-hidden
         hidden
-      '>
+    '>
       <button
         name='playback'
         aria-pressed='false'
@@ -84,9 +90,18 @@ export default function AudioPlayer ({ html, state }) {
         <img src='/_public/icons/play.svg' alt='play' class='play relative' />
         <img src='/_public/icons/pause.svg' alt='pause' class='pause' />
       </button>
-      <span id='currentTime' class='numeric text-2'>00:00</span>
-      <input type='range' name='timeline' min='0' max='100' step='1' value='0' />
-      <span id='duration' class='numeric text-2'>00:00</span>
+      <div>
+        <p class='text-2 text-center mbe-4'>
+          <span class='block font-medium'>${trackTitle}</span>
+          <span class='block muted'>${trackArtist}</span>
+        </p>
+        <div class='flex align-items-center justify-content-center gap-2'>
+          <span id='currentTime' class='numeric text-2'>00:00</span>
+          <input type='range' name='timeline' min='0' max='100' step='1' value='0' />
+          <span id='duration' class='numeric text-2'>00:00</span>
+        </div>
+      </div>
+      <img src='${trackCover}' alt='' />
     </figure>
 
     <!-- Waveform UI, client only -->
@@ -100,14 +115,15 @@ export default function AudioPlayer ({ html, state }) {
         cloud: '#f7f0fe',
         cyan: '#71f6ff',
         lily: '#e5ebee',
+        paleCyan: '#d3fbff',
         princess: '#f57aff',
       }
 
       // Gradient for initial waveform
       const waveCtx = document.createElement('canvas').getContext('2d')
-      const waveGradient = waveCtx.createLinearGradient(0, 0, 0, 150)
+      const waveGradient = waveCtx.createLinearGradient(0, 0, 0, 200)
       waveGradient.addColorStop(0.125, colors.cloud)
-      waveGradient.addColorStop(1, colors.lily)
+      waveGradient.addColorStop(1, colors.paleCyan)
 
       // Gradient for progress waveform
       const progressCtx = document.createElement('canvas').getContext('2d')
@@ -152,7 +168,7 @@ export default function AudioPlayer ({ html, state }) {
           // Remove system UI, append client audio, show client UI
           this.systemUi.remove()
           this.player.appendChild(this.audio)
-          this.player.classList.replace('hidden', 'inline-flex')
+          this.player.classList.replace('hidden', 'inline-grid')
           this.waveform.classList.remove('hidden')
 
           // Create waveform

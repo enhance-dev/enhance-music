@@ -3,7 +3,7 @@ export default function TitleBar ({ html }) {
     <style>
       :host {
         display: block;
-        border-block-end: 1px solid var(--grey-100);
+        border-block-end: 1px solid gainsboro;
       }
 
       img {
