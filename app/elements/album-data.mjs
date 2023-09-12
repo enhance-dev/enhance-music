@@ -56,6 +56,18 @@ export default function AlbumData ({ html, state }) {
       header {
         min-inline-size: 66%;
       }
+
+      .playButton {
+        background-color: #eee;
+        border-radius: 0.25em;
+        color: var(--purple);
+        transition: color 0.5s var(--easeOutQuint);
+      }
+
+      .playButton:hover {
+        color: var(--dark);
+      }
+
     </style>
     <article>
       <div class='meta flex flex-wrap align-items-center gap0 gap2-lg mb2'>
@@ -65,6 +77,11 @@ export default function AlbumData ({ html, state }) {
           <p class='muted text1 mbe2'>${album.artist}</p>
           <p class='muted text-1'>${album.label || 'Self released'}, ${album.year}</p>
           ${bandcamp}
+          <div class='mbs2'>
+            <a href='/player/${album.id}-1' target='player' class='playButton font-medium p-2 js-playButton'>
+              <span class='pie-8'>&#9654;</span> Play
+            </a>
+          </div>
         </header>
       </div>
 
@@ -99,9 +116,14 @@ export default function AlbumData ({ html, state }) {
       // Set initial current track based on initial state
       setCurrent(tracks, initialTrack)
 
+      // Update current track when the play button is clicked
+      document.querySelector('.js-playButton').addEventListener('click', () => {
+        setCurrent(tracks, tracks[0].dataset.track)
+      })
+
       // Update current track when a new track is selected
-      const links = document.querySelectorAll('a[target="player"]')
-      links.forEach(link => {
+      const trackLinks = document.querySelectorAll('[data-track]')
+      trackLinks.forEach(link => {
         link.addEventListener('click', (e) => {
           const clickedTrack = e.target.closest('li').dataset.track
           setCurrent(tracks, clickedTrack)
