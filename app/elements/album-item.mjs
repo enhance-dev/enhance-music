@@ -22,7 +22,7 @@ export default function AlbumItem ({ html, state }) {
     </style>
     <a href='/album/${id}'>
       <article>
-        <album-cover cover='${cover}'></album-cover>
+        <album-cover cover='${cover}' id='${id}'></album-cover>
         <h3 class='text-1 font-medium'>${title}</h3>
         <p class='text-1'>${artist}</p>
       </article>

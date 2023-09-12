@@ -71,7 +71,7 @@ export default function AlbumData ({ html, state }) {
     </style>
     <article>
       <div class='meta flex flex-wrap align-items-center gap0 gap2-lg mb2'>
-        <album-cover cover='${album.cover}'></album-cover>
+        <album-cover cover='${album.cover}' id='${album.id}'></album-cover>
         <header>
           <h2 class='text3 font-medium tracking-1 leading1'>${album.title}</h2>
           <p class='muted text1 mbe2'>${album.artist}</p>

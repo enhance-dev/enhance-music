@@ -1,6 +1,6 @@
 export default function AlbumCover ({ html, state }) {
   const { attrs } = state
-  const { cover } = attrs
+  const { cover, id } = attrs
 
   return html`
     <style>
@@ -22,7 +22,7 @@ export default function AlbumCover ({ html, state }) {
         aspect-ratio: 1 / 1;
       }
     </style>
-    <figure class='relative mbe-2'>
+    <figure class='relative mbe-2' style='view-transition-name: album-${id}'>
       <img src='${cover}' alt='' class='object-cover' />
     </figure>
   `

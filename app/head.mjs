@@ -32,6 +32,7 @@ export default function Head (state) {
       <link rel="manifest" href="/_public/app.webmanifest" />
       ${req.rawPath === '/' ? '<script async type="module" src="/_public/browser/sw.mjs"></script>' : ''}
       <meta name="description" content="A music player built with Enhance, the HTML first full stack web framework.">
+      <meta name="view-transition" content="same-origin" />
       <style>
         body {
           color: var(--dark);
