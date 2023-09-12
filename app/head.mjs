@@ -3,7 +3,8 @@ import { getStyles }  from '@enhance/arc-plugin-styles'
 const { linkTag } = getStyles
 
 export default function Head (state) {
-  const { store, req: { session } } = state
+  const { store, req } = state
+  const { session } = req
 
   if (session?.album) {
     store.nav = {
@@ -27,7 +28,9 @@ export default function Head (state) {
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Enhance Music</title>
       ${linkTag()}
-      <link rel="icon" href="/_public/favicon.svg">
+      <link rel="icon" href="/_public/axol.svg">
+      <link rel="manifest" href="/_public/app.webmanifest" />
+      ${req.rawPath === '/' ? '<script async type="module" src="/_public/browser/sw.mjs"></script>' : ''}
       <meta name="description" content="A music player built with Enhance, the HTML first full stack web framework.">
       <style>
         body {
