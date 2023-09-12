@@ -1,0 +1,30 @@
+{
+    "name": "Enhance Music",
+    "short_name": "Enhance Music",
+    "start_url": "/",
+    "scope": "/",
+    "display": "minimal-ui",
+    "theme_color": "#9853f7",
+    "background_color": "#ffffff",
+    "description": "Enhance Music is a non-trivial demo application built to showcase playing audio with web standards.",
+    "orientation": "any",
+    "icons": [
+      {
+        "src": "/_public/axol-music-192.png",
+        "type": "image/png",
+        "sizes": "192x192",
+        "purpose": "any"
+      },
+      {
+        "src": "/_public/axol-music-maskable.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+      {
+        "src": "/_public/axol-music-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ]
+  }
