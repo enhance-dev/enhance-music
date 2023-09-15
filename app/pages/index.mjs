@@ -8,11 +8,13 @@ export default function Index ({ html, state }) {
     <layout-grid>
       <title-bar></title-bar>
       <iframe
+        title='Music library'
         name='library'
         src='${librarySource}'
         class='si-100vw sb-100'
       ></iframe>
       <iframe
+        title='Audio player'
         name='player'
         src='${playerSource}'
         class='si-100vw absolute inset-i-0 inset-be-0'
