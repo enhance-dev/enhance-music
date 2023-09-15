@@ -9,20 +9,19 @@ export default function AudioPlayer ({ html, state }) {
       /* Targets iframe's document */
       html,
       body {
-        block-size: 100%;
         overflow: hidden;
       }
     </style>
 
     <style>
       :host {
+        block-size: var(--playerHeight);
         display: flex;
         align-items: center;
         justify-content: center;
         background: white;
         border-block-start: 1px solid gainsboro;
         position: relative;
-        block-size: 100%;
       }
 
       figure {

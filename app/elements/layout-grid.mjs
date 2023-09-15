@@ -3,13 +3,9 @@ export default function LayoutGrid ({ html }) {
     <style>
       :host {
         display: grid;
-        grid-template-rows: auto 1fr;
-        height: 100vh;
-        position: relative;
-      }
-
-      [name="player"] {
-        block-size: var(--playerHeight);
+        grid-template-rows: auto 1fr var(--playerHeight);
+        block-size: 100vh;
+        overflow: hidden;
       }
     </style>
     <slot></slot>

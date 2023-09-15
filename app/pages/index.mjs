@@ -17,7 +17,7 @@ export default function Index ({ html, state }) {
         title='Audio player'
         name='player'
         src='${playerSource}'
-        class='si-100vw absolute inset-i-0 inset-be-0'
+        class='si-100vw'
       ></iframe>
     </layout-grid>
     <script src='/_public/browser/player-visibility.mjs'></script>
