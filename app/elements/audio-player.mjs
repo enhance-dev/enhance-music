@@ -29,9 +29,12 @@ export default function AudioPlayer ({ html, state }) {
         background: hsla(0 0% 100% / 0.5);
         -webkit-backdrop-filter: blur(2px);
         backdrop-filter: blur(2px);
-        box-shadow: 0 0 3px gainsboro;
         border-radius: 0.25em;
         grid-template-columns: auto 1fr 3.75em;
+      }
+
+      #player {
+        box-shadow: 0 0 3px gainsboro;
       }
 
       [name='playback'] {
