@@ -1,6 +1,6 @@
 export default function AlbumData ({ html, state }) {
   const { store } = state
-  const { album, nav = {} } = store
+  const { album = {}, nav = {} } = store
 
   const { track = '' } = nav
 
@@ -86,7 +86,7 @@ export default function AlbumData ({ html, state }) {
       </div>
 
       <ol class='mb0 list-none'>
-        ${album.tracklist.map((track, index) => `<li data-track='${album.id}-${index + 1}'>
+        ${album?.tracklist?.map((track, index) => `<li data-track='${album.id}-${index + 1}'>
           <a class='pb-4 grid flow-col align-items-baseline' href='/player/${album.id}-${index + 1}' target='player'>
             <span class='text-1 muted numeric index'>${index + 1}</span>
             <span class='playing'>&#9654;</span>

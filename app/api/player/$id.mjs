@@ -9,14 +9,14 @@ export async function get (req) {
   const [albumId, , trackId] = id
 
   const album = albums.find(album => album.id == albumId)
-  const track = album.tracklist[trackId - 1]
+  const track = album?.tracklist[trackId - 1]
 
   return {
     json: {
       track: `tracks/${id}.mp3`,
-      trackArtist: album.artist,
-      trackTitle: track.title,
-      trackCover: album.cover,
+      trackArtist: album?.artist || '',
+      trackTitle: track?.title || '',
+      trackCover: album?.cover || '',
     },
     session: {
       ...prevSession,
