@@ -1,0 +1,24 @@
+<style>
+  p {
+    color: var(--muted);
+  }
+
+  a:hover album-cover {
+    scale: 1.05;
+  }
+
+  a:active album-cover {
+    scale: 0.9375;
+  }
+
+  a:focus-visible {
+    outline-offset: 0.25em;
+  }
+</style>
+<a href='/album/${attrs.id}'>
+  <article>
+    <album-cover cover='${attrs.cover}' id='${attrs.id}'></album-cover>
+    <h3 class='text-1 font-medium'>${attrs.title}</h3>
+    <p class='text-1'>${attrs.artist}</p>
+  </article>
+</a>
