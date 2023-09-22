@@ -210,6 +210,8 @@ export default function AudioPlayer ({ html, state }) {
           this.playback.setAttribute('aria-pressed', false)
         }
 
+        // Fires whenever the audio element's currentTime property updates,
+        // usually a few times every second
         onTimeUpdate = () => {
           // Sync currentTime to timeline value, time display, and wavesurfer
           const { currentTime } = this.audio
@@ -218,7 +220,7 @@ export default function AudioPlayer ({ html, state }) {
           this.wavesurfer.setTime(currentTime)
         }
 
-        // input.ontimeupdate fires continuously as the range input is dragged/manipulated by the user
+        // input.oninput fires continuously as the range input is dragged/manipulated by the user
         onTimelineInput = (e) => {
           // Pause syncing between audio.currentTime and the timeline value;
           // this allows us to update the range input based on user input instead
@@ -230,7 +232,7 @@ export default function AudioPlayer ({ html, state }) {
           this.wavesurfer.setTime(seekTime)
         }
 
-        // input.onchange fires when the final value is selected by the user (i.e. on drag end)
+        // input.onchange fires when the final value is selected by the user (e.g. on drag end)
         onTimelineChange = (e) => {
           const newTime = Number(e.target.value)
           this.timeline.value = newTime
