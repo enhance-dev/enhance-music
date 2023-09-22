@@ -212,7 +212,7 @@ export default function AudioPlayer ({ html, state }) {
 
         onTimeUpdate = () => {
           // Sync currentTime to timeline value, time display, and wavesurfer
-          const { currentTime, paused } = this.audio
+          const { currentTime } = this.audio
           this.timeline.value = currentTime
           this.currentTimeDisplay.innerText = formatTime(currentTime)
           this.wavesurfer.setTime(currentTime)
