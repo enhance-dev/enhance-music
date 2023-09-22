@@ -69,6 +69,8 @@ export default function AudioPlayer ({ html, state }) {
     <!-- Progressively enhanced audio player, client only -->
     <figure
       id='player'
+      role='region'
+      aria-label='Audio player'
       class='
         align-items-center
         justify-content-center
@@ -86,11 +88,12 @@ export default function AudioPlayer ({ html, state }) {
       <button
         name='playback'
         aria-pressed='false'
+        aria-controls='client-audio-element'
         aria-label='Toggle playback'
         class='radius-100 flex align-items-center justify-content-center'
       >
-        <img src='/_public/icons/play.svg' alt='play' class='play relative' />
-        <img src='/_public/icons/pause.svg' alt='pause' class='pause' />
+        <img src='/_public/icons/play.svg' alt='' class='play relative' />
+        <img src='/_public/icons/pause.svg' alt='' class='pause' />
       </button>
       <div>
         <p class='text-2 text-center mbe-4'>
@@ -99,7 +102,7 @@ export default function AudioPlayer ({ html, state }) {
         </p>
         <div class='flex align-items-center justify-content-center gap-2'>
           <span id='currentTime' class='numeric text-2'>00:00</span>
-          <input type='range' name='timeline' min='0' max='100' step='1' value='0' />
+          <input type='range' name='timeline' min='0' max='100' step='1' value='0' aria-controls='client-audio-element' />
           <span id='duration' class='numeric text-2'>00:00</span>
         </div>
       </div>
@@ -155,6 +158,7 @@ export default function AudioPlayer ({ html, state }) {
           // before rendering it; otherwise the events will fire before we can attach the listeners :,)
           this.audio = document.createElement('audio')
           this.audio.src = document.querySelector('#systemUi audio').getAttribute('src')
+          this.audio.id = 'client-audio-element'
           this.audio.autoplay = true
 
           // Event listeners
