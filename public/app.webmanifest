@@ -4,7 +4,7 @@
     "start_url": "/",
     "scope": "/",
     "display": "minimal-ui",
-    "theme_color": "#9853f7",
+    "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "description": "Enhance Music is a non-trivial demo application built to showcase playing audio with web standards.",
     "orientation": "any",
