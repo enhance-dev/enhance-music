@@ -6,7 +6,7 @@ This example project is meant to demonstrate the kind of exceptional developer a
 
 We invite you to explore the codebase, [try Enhance Music for yourself](https://enhance-music.com), and ping us with any questions on [the Enhance Discord server](https://enhance.dev/discord).
 
-You can also read [the Enhance Music deep dive on the Begin blog](https://begin.com/blog/posts/TBA).
+You can also read [the Enhance Music deep dive on the Begin blog](https://begin.com/blog/posts/2023-09-28-introducing-enhance-music).
 
 Instructions for running Enhance Music locally can be found below.
 
