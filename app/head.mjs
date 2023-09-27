@@ -34,7 +34,13 @@ export default function Head (state) {
       <meta property="og:url" content="https://enhance-music.com" />
       <meta property="og:title" content="Enhance Movies" />
       <meta property="og:description" content="A music library and audio player, built with HTML, CSS, JavaScript, and Enhance." />
-      <meta property="og:image" content="/_public/enhance-music-og.png" />
+      <meta property="og:image" content="https://enhance-music.com/_public/enhance-music-og.png" />
+      <!-- Twitter -->
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="https://enhance-music.com" />
+      <meta property="twitter:title" content="Enhance Music" />
+      <meta property="twitter:description" content="A music library and audio player, built with HTML, CSS, JavaScript, and Enhance." />
+      <meta property="twitter:image" content="https://enhance-music.com/_public/enhance-music-og.png" />
       <link rel="manifest" href="/_public/app.webmanifest" />
       ${req.rawPath === '/' ? '<script async type="module" src="/_public/browser/sw.mjs"></script>' : ''}
       <meta name="description" content="A music library and audio player, built with HTML, CSS, JavaScript, and Enhance.">
