@@ -1,6 +1,6 @@
 {
   "name": "enhance-music",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "start": "npx enhance dev",
     "lint": "eslint ./app/**/*.mjs --fix"
