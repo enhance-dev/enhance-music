@@ -29,9 +29,15 @@ export default function Head (state) {
       <title>Enhance Music</title>
       ${linkTag()}
       <link rel="icon" href="/_public/axol.svg">
+      <!-- Open Graph -->
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://enhance-music.com" />
+      <meta property="og:title" content="Enhance Movies" />
+      <meta property="og:description" content="A music library and audio player, built with HTML, CSS, JavaScript, and Enhance." />
+      <meta property="og:image" content="/_public/enhance-music-og.png" />
       <link rel="manifest" href="/_public/app.webmanifest" />
       ${req.rawPath === '/' ? '<script async type="module" src="/_public/browser/sw.mjs"></script>' : ''}
-      <meta name="description" content="A music player built with Enhance, the HTML first full stack web framework.">
+      <meta name="description" content="A music library and audio player, built with HTML, CSS, JavaScript, and Enhance.">
       <meta name="view-transition" content="same-origin" />
       <style>
         body {
