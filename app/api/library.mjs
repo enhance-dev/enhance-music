@@ -1,7 +1,7 @@
 import albums from '../lib/albums.mjs'
 import getCacheControl from '../lib/cacheControl.mjs'
 
-export async function get (req) {
+export const get = [async function get (req) {
   const { session: prevSession } = req
 
   return {
@@ -17,4 +17,4 @@ export async function get (req) {
       track: prevSession.track || null,
     }
   }
-}
+}]

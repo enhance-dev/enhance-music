@@ -1,7 +1,7 @@
 import albums from '../../lib/albums.mjs'
 import getCacheControl from '../../lib/cacheControl.mjs'
 
-export async function get (req) {
+export const get = [async function get (req) {
   const { session: prevSession } = req
   const { id } = req.pathParameters
 
@@ -27,4 +27,4 @@ export async function get (req) {
       track: id,
     }
   }
-}
+}]
