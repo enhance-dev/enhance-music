@@ -48,6 +48,7 @@ export default function Head (state) {
       <style>
         body {
           color: var(--dark);
+          min-block-size: 0;
         }
 
         .muted {
