@@ -4,10 +4,6 @@ export default function AlbumItem ({ html, state }) {
 
   return html`
     <style>
-      p {
-        color: var(--muted);
-      }
-
       a:hover album-cover {
         scale: 1.05;
       }
@@ -24,7 +20,7 @@ export default function AlbumItem ({ html, state }) {
       <article>
         <album-cover cover='${cover}' id='${id}'></album-cover>
         <h3 class='text-1 font-medium'>${title}</h3>
-        <p class='text-1'>${artist}</p>
+        <p class='text-1 muted'>${artist}</p>
       </article>
     </a>
   `
