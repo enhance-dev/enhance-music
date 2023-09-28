@@ -32,7 +32,7 @@ export default function Head (state) {
       <!-- Open Graph -->
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://enhance-music.com" />
-      <meta property="og:title" content="Enhance Movies" />
+      <meta property="og:title" content="Enhance Music" />
       <meta property="og:description" content="A music library and audio player, built with HTML, CSS, JavaScript, and Enhance." />
       <meta property="og:image" content="https://enhance-music.com/_public/enhance-music-og.png" />
       <!-- Twitter -->
