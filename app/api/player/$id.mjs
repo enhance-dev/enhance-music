@@ -1,4 +1,5 @@
 import albums from '../../lib/albums.mjs'
+import getCacheControl from '../../lib/cacheControl.mjs'
 
 export async function get (req) {
   const { session: prevSession } = req
@@ -12,6 +13,9 @@ export async function get (req) {
   const track = album?.tracklist[trackId - 1]
 
   return {
+    headers: {
+      'cache-control': getCacheControl(),
+    },
     json: {
       track: `tracks/${id}.mp3`,
       trackArtist: album?.artist || '',
