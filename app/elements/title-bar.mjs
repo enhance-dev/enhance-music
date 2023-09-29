@@ -12,11 +12,15 @@ export default function TitleBar ({ html }) {
       }
     </style>
     <nav class='pb0'>
-      <layout-container>
+      <layout-container class='flex align-items-center'>
         <a class='no-underline flex gap-1 align-items-center' href='/library' target='library'>
           <img src='/_public/axol.svg' alt='Axol' />
           <h1 class='text1 font-medium tracking-1'>Enhance Music</h1>
         </a>
+        <div class='mis-auto flex gap0'>
+          <a class='underline text-1 font-medium' href='https://enhance.dev'>Enhance</a>
+          <a class='underline text-1 font-medium' href='https://github.com/enhance-dev/enhance-music'>GitHub</a>
+        </div>
       </layout-container>
     </nav>
   `

@@ -3,12 +3,6 @@ export default function RecentlyPlayed ({ html, state }) {
   const { recent } = store
 
   return html`
-    <style>
-      :host {
-        display: block;
-        padding-block-end: var(--playerHeight);
-      }
-    </style>
     <section class='mb4'>
       <layout-container>
         <h2 class='text2 font-medium tracking-1 mbe2'>Library</h2>

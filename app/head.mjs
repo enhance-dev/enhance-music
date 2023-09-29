@@ -51,6 +51,14 @@ export default function Head (state) {
           min-block-size: 0;
         }
 
+        footer {
+          padding-block-end: var(--playerHeight);
+        }
+
+        footer p {
+          max-inline-size: 48ch;
+        }
+
         .muted {
           color: var(--muted);
         }
