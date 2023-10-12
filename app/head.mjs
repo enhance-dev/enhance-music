@@ -1,6 +1,6 @@
 import { getStyles }  from '@enhance/arc-plugin-styles'
 
-const { linkTag } = getStyles
+const { styleTag } = getStyles
 
 export default function Head (state) {
   const { store, req } = state
@@ -27,7 +27,7 @@ export default function Head (state) {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Enhance Music</title>
-      ${linkTag()}
+      ${styleTag()}
       <link rel="icon" href="/_public/axol.svg">
       <!-- Open Graph -->
       <meta property="og:type" content="website" />
