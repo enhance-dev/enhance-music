@@ -197,5 +197,106 @@ export default [
         duration: '1:42',
       }
     ],
+  },
+  {
+    id: 9,
+    cover: '/_public/covers/splendourhyaline-presentfuture.webp',
+    title: 'Present-Future',
+    artist: 'Splendour Hyaline',
+    label: 'Spareroom Studios',
+    bandcamp: 'https://splendourhyaline.bandcamp.com/album/present-future',
+    year: 2019,
+    tracklist: [
+      {
+        title: 'Hello',
+        duration: '3:55',
+      },
+      {
+        title: 'When There Was Still Code To Write',
+        duration: '4:18',
+      },
+      {
+        title: 'Sunlight',
+        duration: '4:36',
+      },
+      {
+        title: 'Tortoise and the Hare',
+        duration: '4:02',
+      },
+      {
+        title: 'Ivy on Stone',
+        duration: '4:02',
+      },
+      {
+        title: 'When I Leave My Hiding Place',
+        duration: '5:02',
+      },
+      {
+        title: 'When Love Leaves Its Hiding Place',
+        duration: '5:25',
+      },
+      {
+        title: 'Present-Future',
+        duration: '4:09',
+      },
+      {
+        title: 'At Least For Now',
+        duration: '5:01',
+      },
+      {
+        title: 'Ghost in the Machine',
+        duration: '4:43',
+      },
+      {
+        title: 'Sunday',
+        duration: '4:13',
+      },
+      {
+        title: 'Regress As Progress',
+        duration: '4:20',
+      },
+      {
+        title: 'Planned Obsolescence',
+        duration: '5:06',
+      },
+      {
+        title: 'One Step',
+        duration: '6:30',
+      },
+    ],
+  },
+  {
+    id: 10,
+    cover: '/_public/covers/splendourhyaline-hope.webp',
+    title: 'Hope (A Sliver, Like the Moon)',
+    artist: 'Splendour Hyaline',
+    label: 'Spareroom Studios',
+    year: 2006,
+    tracklist: [
+      {
+        title: 'So Talk About It',
+        duration: '4:14',
+      },
+      {
+        title: 'The Restless Slumber of Dry Kindling',
+        duration: '5:28',
+      },
+      {
+        title: 'Liability',
+        duration: '4:38',
+      },
+      {
+        title: 'Waiting (Fugaz)',
+        duration: '5:04',
+      },
+      {
+        title: 'Arctic Wastelands in the Quest for Character',
+        duration: '5:58',
+      },
+      {
+        title: 'Arid Deserts in the Quest for Companionship',
+        duration: '7:36',
+      },
+    ],
   }
 ]
