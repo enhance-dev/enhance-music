@@ -101,6 +101,7 @@ export default function AlbumData ({ html, state }) {
       </ol>
     </article>
 
+    <js-naked-day>
     <script id='initial-state' type='application/json'>
       { "track": "${track}" }
     </script>
@@ -130,5 +131,7 @@ export default function AlbumData ({ html, state }) {
         })
       })
     </script>
+    </js-naked-day>
+
   `
 }

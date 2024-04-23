@@ -112,6 +112,7 @@ export default function AudioPlayer ({ html, state }) {
     <!-- Waveform UI, client only -->
     <div id='waveform' class='si-100 relative z0 hidden'></div>
 
+    <js-naked-day>
     <script type='module'>
       import Wavesurfer from '/_public/browser/wavesurfer.mjs'
       import formatTime from '/_public/browser/format-time.mjs'
@@ -250,5 +251,6 @@ export default function AudioPlayer ({ html, state }) {
 
       customElements.define('audio-player', AudioPlayer)
     </script>
+    </js-naked-day>
   `
 }

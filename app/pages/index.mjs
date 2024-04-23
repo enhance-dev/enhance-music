@@ -20,6 +20,8 @@ export default function Index ({ html, state }) {
         class='si-100vw'
       ></iframe>
     </layout-grid>
-    <script src='/_public/browser/player-visibility.mjs'></script>
+    <js-naked-day>
+      <script src='/_public/browser/player-visibility.mjs'></script>
+    </js-naked-day>
   `
 }
